@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import Display from './Display'
 import News from './News'
+import Contacts from './Contacts'
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
     <Navbar/>
     <Display/>
     <News/>
+    <Contacts/>
    </main>
   )
 }

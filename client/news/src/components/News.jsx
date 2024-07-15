@@ -14,7 +14,7 @@ function News() {
             'q=Apple&' +
             'from=2024-07-01&' +  // Set a past date for better results
             'sortBy=popularity&' +
-            '{your api key}';
+            'apiKey=e4de229c72574d1cbd38b32aa44a1373';
 
         try {
             const response = await fetch(url);
