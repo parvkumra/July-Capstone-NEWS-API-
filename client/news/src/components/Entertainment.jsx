@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; 
 import Newscard from './Newscard'; 
+import { Link } from 'react-router-dom'; 
 
-function Sports() {
+function Politics() {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const fetchNews = async () => {
         const url = 'https://newsapi.org/v2/top-headlines?' +
-            'country=in&' + 'category=sports' +
+            'country=us&' + 'category=politics' +
             '&apiKey=e4de229c72574d1cbd38b32aa44a1373';
 
         try {
@@ -40,7 +40,7 @@ function Sports() {
     return (
         <div>
             <header className="bg-blue-500 text-white p-4 text-center">
-                <h1 className="text-2xl font-bold">Sports News</h1>
+                <h1 className="text-2xl font-bold">Politics News</h1>
                 <Link to="/home" className="mt-2 inline-block text-white bg-gray-700 hover:bg-gray-600 p-2 rounded">
                     Back to Home
                 </Link>
@@ -64,4 +64,4 @@ function Sports() {
     );
 }
 
-export default Sports;
+export default Politics;

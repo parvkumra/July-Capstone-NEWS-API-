@@ -8,10 +8,10 @@ function Contacts() {
         <center><img src='src/assets/newspaper05.jpg.jpg' width={200} height={60}/></center>
     <div className='flex flex-col justify-center items-center w-full'>
       <div className='flex justify-between w-600'>
-        <div className='ml-2 mr-20'><a href='mailto:(mail id)'><span className="material-symbols-outlined h-50">
+        <div className='ml-2 mr-20'><a href='mailto:parvkumra2003@gmail.com'><span className="material-symbols-outlined h-50">
 mail
 </span></a></div>
-        <div className='ml-20 mr-2'><a href='sms:(country code)(phone number)'><span className="material-symbols-outlined">
+        <div className='ml-20 mr-2'><a href='sms:+917042292704'><span className="material-symbols-outlined">
 call
 </span></a></div>
 </div>

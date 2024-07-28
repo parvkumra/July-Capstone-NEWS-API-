@@ -1,9 +1,12 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import gsap from "gsap";
 import { useNavigate } from 'react-router-dom';
-import "./Nav.css"; // Ensure this file exists and contains your CSS imports
+import "./Nav.css"; 
 
 function Navbar() {
+  const [searchTerm, setSearchTerm] = useState(''); 
+  const navigate = useNavigate();
+
   useEffect(() => {
     gsap.to('#hello', {
       rotationY: 360,
@@ -12,12 +15,18 @@ function Navbar() {
     });
   }, []);
 
-  const arr = ['Sports', 'Technology', 'Politics'];
-  const navigate = useNavigate();
-  
+  const arr = ['Sports', 'Technology', 'Entertainment'];
+
   const handleNavigation = (item) => {
-    navigate(`/${item.toLowerCase()}`); // Navigating to a URL based on the item name
-  }
+    navigate(`/${item.toLowerCase()}`); 
+  };
+
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+     
+      navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+    }
+  };
 
   return (
     <header className='flex w-full items-center bg-white'>
@@ -25,20 +34,31 @@ function Navbar() {
         <img id="hello" src="src/assets/download.png" alt="Logo" height={100} width={100} /> {/* Replace with your actual logo path */}
         <div className='flex justify-between items-center'>
           {arr.map((item, index) => (
-            <div onClick={() => handleNavigation(item)} key={index} className='px-14 py-4 font-nishu text-slate-900 font-bold cursor-pointer hover:bg-black hover:text-white'>
+            <div
+              onClick={() => handleNavigation(item)}
+              key={index}
+              className='px-14 py-4 font-nishu text-slate-900 font-bold cursor-pointer hover:bg-black hover:text-white'
+            >
               {item}
             </div>
           ))}
         </div>
         <div className='flex items-center'>
-          <div><input className='border p-2' type="text" placeholder="Search" /></div>
-          <div className='p-4'>
-            <button className='bg-slate-300 text-slate-900 font-semibold py-1 px-4'>
-              <span className="material-symbols-outlined">
-                search
-              </span>
-            </button>
-          </div>
+          <input
+            className='border p-2'
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} 
+          />
+          <button
+            onClick={handleSearch}
+            className='bg-slate-300 text-slate-900 font-semibold py-1 px-4 ml-2'
+          >
+            <span className="material-symbols-outlined">
+              search
+            </span>
+          </button>
         </div>
       </nav>
     </header>

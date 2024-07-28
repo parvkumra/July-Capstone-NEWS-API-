@@ -1,13 +1,17 @@
 const express=require("express");
 const app=express();
 const userRouter=require("./routers/userRouter")
-app.get("/hello",(req,res)=>{
-    res.json({
-        msg:"hello bro hbd guruji"
-    })
-});
+const dotenv=require("dotenv");
+const connectdb = require("./config/connection");
+dotenv.config();
+
+
+const PORT=process.env.PORT || 3000;
+app.use(express.json());
+connectdb();
+
 app.use("/api/vi/user",userRouter)
 
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log("server started")
 })
